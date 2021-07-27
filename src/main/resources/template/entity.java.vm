@@ -1,0 +1,53 @@
+package ${package.Entity};
+
+import java.io.Serializable;
+#if(${table.hasDate})
+import java.util.Date;
+#end
+import lombok.Data;
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * <p>
+ * ${table.name}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+@Entity(name="`${table.name}`")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+public class ${entity} implements Serializable {
+
+private static final long serialVersionUID = 1L;
+
+#foreach($field in ${table.fields})
+	/**
+	 * ${field.comment}
+	 */
+#if(${field.keyFlag} && ${idGenType}!="ID_WORKER")
+    @Id
+#end
+	@Column(name="`${field.name}`")
+	private ${field.propertyType} ${field.propertyName};
+
+#end
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("${entity}{").append(super.toString());
+
+#foreach($field in ${table.fields})
+	#if(${field.propertyType.equals("String")})
+sb.append(",${field.propertyName}='").append(${field.propertyName}).append('\'');
+	#else
+sb.append(",${field.propertyName}=").append(${field.propertyName});
+	#end
+#end
+
+		sb.append('}');
+		return sb.toString();
+	}
+}

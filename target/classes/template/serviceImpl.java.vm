@@ -1,0 +1,75 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+import ${package.Repository}.${table.repositoryName};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * <p>
+ * ${table.comment}  服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+public class ${table.serviceImplName} implements ${table.serviceName} {
+
+    @Autowired
+    private ${table.repositoryName} ${table.strConvertLowerCamel(${table.repositoryName})};
+
+    /**
+     * 添加
+     *
+     * @param entity
+     * @return
+     */
+    @Override
+    public ${entity} save(${entity} entity) {
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.save(entity);
+    }
+
+    /**
+     * 修改
+     *
+     * @param entity
+     * @return
+     */
+    @Override
+    public ${entity} update(${entity} entity) {
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.saveAndFlush(entity);
+    }
+
+    /**
+     * 查询所有
+     */
+    @Override
+    public List<${entity}> findAll() {
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.findAll();
+    }
+
+    /**
+     * 删除
+     *
+     * @param key 唯一标识
+     */
+    @Override
+    public void remove(String key) {
+        ${table.strConvertLowerCamel(${table.repositoryName})}.deleteById(key);
+    }
+
+    /**
+     * 查询详情
+     *
+     * @param key 唯一标识
+     * @return
+     */
+    @Override
+    public ${entity} getById(String key) {
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.getOne(key);
+    }
+}

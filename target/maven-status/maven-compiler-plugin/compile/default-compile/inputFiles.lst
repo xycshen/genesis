@@ -1,0 +1,16 @@
+/Library/myProject/genesis/src/main/java/com/myth/AbstractGenesisMojo.java
+/Library/myProject/genesis/src/main/java/com/myth/config/enums/DbType.java
+/Library/myProject/genesis/src/main/java/com/myth/config/po/TableField.java
+/Library/myProject/genesis/src/main/java/com/myth/config/DataSourceConfig.java
+/Library/myProject/genesis/src/main/java/com/myth/config/constant/ConfigConstant.java
+/Library/myProject/genesis/src/main/java/com/myth/config/enums/QuerySQL.java
+/Library/myProject/genesis/src/main/java/com/myth/config/builder/ConfigBuilder.java
+/Library/myProject/genesis/src/main/java/com/myth/config/PackageConfig.java
+/Library/myProject/genesis/src/main/java/com/myth/config/po/TableInfo.java
+/Library/myProject/genesis/src/main/java/com/myth/util/PackageUtils.java
+/Library/myProject/genesis/src/main/java/com/myth/config/constant/ConstVal.java
+/Library/myProject/genesis/src/main/java/com/myth/config/enums/NamingStrategy.java
+/Library/myProject/genesis/src/main/java/com/myth/config/StrategyConfig.java
+/Library/myProject/genesis/src/main/java/com/myth/config/TemplateConfig.java
+/Library/myProject/genesis/src/main/java/com/myth/config/enums/IdStrategy.java
+/Library/myProject/genesis/src/main/java/com/myth/GenesisMojo.java

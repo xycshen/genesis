@@ -1,0 +1,93 @@
+package ${package.Controller};
+
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+import ${package.ResultModel}.ResultModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
+
+
+/**
+ * <p>
+ * ${table.comment}  前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Controller
+@Validated
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/${table.entityName.toLowerCase()}")
+public class ${table.controllerName} {
+
+    @Autowired
+    private ${table.serviceName} ${table.strConvertLowerCamel(${table.serviceName})};
+
+    /**
+     * 添加对象
+     *
+     * @param ${table.strConvertLowerCamel(${entity})} 对象
+     * @return ResultModel统一响应结果
+     */
+    @PostMapping("save")
+    @ResponseBody
+    public ResultModel<Object> save(${entity} ${table.strConvertLowerCamel(${entity})}) {
+        ${table.strConvertLowerCamel(${table.serviceName})}.save(${table.strConvertLowerCamel(${entity})});
+        return ResultModel.success();
+    }
+
+    /**
+     * 根据ID进行删除
+     *
+     * @param key 主键
+     * @return ResultModel统一响应结果
+     */
+    @PostMapping("removeById")
+    @ResponseBody
+    public ResultModel<Object> delete(@NotBlank(message = "唯一标识不能为空") String key) {
+        ${table.strConvertLowerCamel(${table.serviceName})}.remove(key);
+        return ResultModel.success();
+    }
+
+    /**
+     * 根据ID进行修改对象
+     *
+     * @param ${table.strConvertLowerCamel(${entity})} 对象中必须有ID主键
+     * @return ResultModel统一响应结果
+     */
+    @PostMapping("update")
+    @ResponseBody
+    public ResultModel<Object> update(${entity} ${table.strConvertLowerCamel(${entity})}) {
+        ${table.strConvertLowerCamel(${table.serviceName})}.update(${table.strConvertLowerCamel(${entity})});
+        return ResultModel.success();
+    }
+
+    /**
+     * 查询详情
+     *
+     * @param key 主键
+     * @return ResultModel统一响应结果
+     */
+    @GetMapping("getById")
+    @ResponseBody
+    public ResultModel<${entity}> getById(@NotBlank(message = "唯一标识不能为空") String key) {
+        ${entity} ${table.strConvertLowerCamel(${entity})} = ${table.strConvertLowerCamel(${table.serviceName})}.getById(key);
+        return ResultModel.success(${table.strConvertLowerCamel(${entity})});
+    }
+
+    /**
+     * 分页查询
+     *
+     * @return ResultModel统一响应结果
+     */
+    @PostMapping("list")
+    @ResponseBody
+    public ResultModel<List<${entity}>> list() {
+        List<${entity}> list = ${table.strConvertLowerCamel(${table.serviceName})}.findAll();
+        return ResultModel.success(list);
+    }
+}
