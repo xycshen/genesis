@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
 #if(${field.keyFlag} && ${idGenType}!="ID_WORKER")
     @Id
 #end
-	@Column(name="`${field.name}`")
+	@Column(name="${field.name}")
 	private ${field.propertyType} ${field.propertyName};
 
 #end
