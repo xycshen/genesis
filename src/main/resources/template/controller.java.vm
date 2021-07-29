@@ -1,7 +1,9 @@
 package ${package.Controller};
 
 import ${package.Service}.${table.serviceName};
-import ${package.Entity}.${entity};
+import ${package.EntityVO}.Save${entity}VO;
+import ${package.EntityVO}.Update${entity}VO;
+import ${package.EntityVO}.${entity}VO;
 import ${package.ResultModel}.ResultModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
+import java.util.stream.Collectors;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 
 
 /**
@@ -21,6 +27,7 @@ import java.util.List;
  */
 @Controller
 @Validated
+@Api(value = "${table.comment}")
 @RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/${table.entityName.toLowerCase()}")
 public class ${table.controllerName} {
 
@@ -35,19 +42,22 @@ public class ${table.controllerName} {
      */
     @PostMapping("save")
     @ResponseBody
-    public ResultModel<Object> save(${entity} ${table.strConvertLowerCamel(${entity})}) {
-        ${table.strConvertLowerCamel(${table.serviceName})}.save(${table.strConvertLowerCamel(${entity})});
+    @ApiOperation(value = "添加")
+    public ResultModel<Object> save(@ModelAttribute Save${entity}VO ${table.strConvertLowerCamel(${entity})}) {
+        ${table.strConvertLowerCamel(${table.serviceName})}.save(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }
 
     /**
      * 根据ID进行删除
      *
-     * @param key 主键
+     * @param key 唯一标识
      * @return ResultModel统一响应结果
      */
     @PostMapping("removeById")
     @ResponseBody
+    @ApiOperation(value = "删除")
+    @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
     public ResultModel<Object> delete(@NotBlank(message = "唯一标识不能为空") String key) {
         ${table.strConvertLowerCamel(${table.serviceName})}.remove(key);
         return ResultModel.success();
@@ -61,21 +71,24 @@ public class ${table.controllerName} {
      */
     @PostMapping("update")
     @ResponseBody
-    public ResultModel<Object> update(${entity} ${table.strConvertLowerCamel(${entity})}) {
-        ${table.strConvertLowerCamel(${table.serviceName})}.update(${table.strConvertLowerCamel(${entity})});
+    @ApiOperation(value = "修改")
+    public ResultModel<Object> update(@ModelAttribute Update${entity}VO ${table.strConvertLowerCamel(${entity})}) {
+        ${table.strConvertLowerCamel(${table.serviceName})}.update(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }
 
     /**
      * 查询详情
      *
-     * @param key 主键
+     * @param key 唯一标识
      * @return ResultModel统一响应结果
      */
     @GetMapping("getById")
     @ResponseBody
-    public ResultModel<${entity}> getById(@NotBlank(message = "唯一标识不能为空") String key) {
-        ${entity} ${table.strConvertLowerCamel(${entity})} = ${table.strConvertLowerCamel(${table.serviceName})}.getById(key);
+    @ApiOperation(value = "通过唯一标识查询单个")
+    @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
+    public ResultModel<${entity}VO> getById(@NotBlank(message = "唯一标识不能为空") String key) {
+        ${entity}VO ${table.strConvertLowerCamel(${entity})} = new ${entity}VO(${table.strConvertLowerCamel(${table.serviceName})}.getById(key));
         return ResultModel.success(${table.strConvertLowerCamel(${entity})});
     }
 
@@ -86,8 +99,9 @@ public class ${table.controllerName} {
      */
     @PostMapping("list")
     @ResponseBody
-    public ResultModel<List<${entity}>> list() {
-        List<${entity}> list = ${table.strConvertLowerCamel(${table.serviceName})}.findAll();
+    @ApiOperation(value = "查询所有")
+    public ResultModel<List<${entity}VO>> list() {
+        List<${entity}VO> list = ${table.strConvertLowerCamel(${table.serviceName})}.findAll().stream().map(${table.strConvertLowerCamel(${entity})} -> new ${entity}VO(${table.strConvertLowerCamel(${entity})})).collect(Collectors.toList());
         return ResultModel.success(list);
     }
 }

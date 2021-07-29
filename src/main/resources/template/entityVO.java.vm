@@ -1,0 +1,33 @@
+package ${package.EntityVO};
+
+#if(${table.hasDate})
+import java.util.Date;
+#end
+import lombok.Data;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.beans.BeanUtils;
+import ${package.Entity}.${entity};
+
+/**
+ * <p>
+ * ${table.name}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+public class ${entity}VO  {
+
+#foreach($field in ${table.fields})
+	/**
+	 * ${field.comment}
+	 */
+	@ApiModelProperty(value = "${field.comment}")
+	private ${field.propertyType} ${field.propertyName};
+#end
+
+	public ${entity}VO(${entity} ${table.strConvertLowerCamel(${entity})}) {
+		BeanUtils.copyProperties(${table.strConvertLowerCamel(${entity})},this);
+	}
+}

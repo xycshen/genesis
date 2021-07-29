@@ -69,6 +69,12 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("SwaggerConfig", "swagger_config", File.separator + "SwaggerConfig.java", PackageUtils.joinPackage(config.getParent(), "config.swagger"), ConstVal.TEMPLATE_SWAGGER_CONFIG);
         ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("EntityVO", "vo_path", File.separator + "%sVO.java", PackageUtils.joinPackage(config.getParent(), "vo"), ConstVal.TEMPLATE_ENTITY_VO);
+        ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("SaveEntityVO", "vo_path", File.separator + "Save%sVO.java", PackageUtils.joinPackage(config.getParent(), "vo"), ConstVal.TEMPLATE_SAVE_ENTITY_VO);
+        ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("UpdateEntityVO", "vo_path", File.separator + "Update%sVO.java", PackageUtils.joinPackage(config.getParent(), "vo"), ConstVal.TEMPLATE_UPDATE_ENTITY_VO);
+        ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("application.properties", ConstVal.APPLICATION, File.separator + "application.properties", "", ConstVal.TEMPLATE_APPLICATION_PROPERTIES);
         ConstVal.configConstantList.add(constant);
     }

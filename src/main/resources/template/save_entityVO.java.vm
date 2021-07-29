@@ -1,0 +1,36 @@
+package ${package.EntityVO};
+
+#if(${table.hasDate})
+import java.util.Date;
+#end
+import lombok.Data;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.beans.BeanUtils;
+import ${package.Entity}.${entity};
+
+/**
+ * <p>
+ * 新增${table.name}对象
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+public class Save${entity}VO  {
+	#foreach($field in ${table.fields})
+	#if(!${field.keyFlag})
+	/**
+	 * ${field.comment}
+	 */
+	@ApiModelProperty(value = "${field.comment}")
+	private ${field.propertyType} ${field.propertyName};
+	#end
+	#end
+
+	public ${entity} to${entity}() {
+		${entity} ${table.strConvertLowerCamel(${entity})} = new ${entity}();
+		BeanUtils.copyProperties(this,${table.strConvertLowerCamel(${entity})});
+		return ${table.strConvertLowerCamel(${entity})};
+	}
+}

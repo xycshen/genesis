@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @since ${date}
  */
 @Data
-@Entity(name="`${table.name}`")
+@Entity(name="${table.name}")
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class ${entity} implements Serializable {
 
