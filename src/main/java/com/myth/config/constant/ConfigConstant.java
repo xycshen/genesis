@@ -65,6 +65,10 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Bootstrap", "bootstrap", File.separator + "Bootstrap.java", config.getParent(), ConstVal.TEMPLATE_BOOTSTRAP);
         ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("Config", "web_mvc_config", File.separator + "WebMvcConfig.java", PackageUtils.joinPackage(config.getParent(), "config"), ConstVal.TEMPLATE_WEB_MVC_CONFIG);
+        ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("SwaggerConfig", "swagger_config", File.separator + "SwaggerConfig.java", PackageUtils.joinPackage(config.getParent(), "config.swagger"), ConstVal.TEMPLATE_SWAGGER_CONFIG);
+        ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("application.properties", ConstVal.APPLICATION, File.separator + "application.properties", "", ConstVal.TEMPLATE_APPLICATION_PROPERTIES);
         ConstVal.configConstantList.add(constant);
     }

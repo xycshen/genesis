@@ -42,6 +42,8 @@ public class ConstVal {
     public static final String TEMPLATE_RESULT_MODEL = "/template/result_model.java.vm";
     public static final String TEMPLATE_EXCEPTION_ADVICE = "/template/exception_advice.java.vm";
     public static final String TEMPLATE_BOOTSTRAP = "/template/bootstrap.java.vm";
+    public static final String TEMPLATE_WEB_MVC_CONFIG = "/template/web_mvc_config.java.vm";
+    public static final String TEMPLATE_SWAGGER_CONFIG = "/template/swagger_config.java.vm";
     public static final String TEMPLATE_APPLICATION_PROPERTIES = "/template/application.properties.vm";
 
 

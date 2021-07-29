@@ -2,3 +2,5 @@ spring.datasource.driver-class-name=${datasource.driverName}
 spring.datasource.username=${datasource.username}
 spring.datasource.password=${datasource.password}
 spring.datasource.url=${datasource.url}
+
+swagger2.enable=true
