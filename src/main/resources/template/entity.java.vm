@@ -7,6 +7,7 @@ import java.util.Date;
 import lombok.Data;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * <p>
@@ -29,6 +30,8 @@ private static final long serialVersionUID = 1L;
 	 */
 #if(${field.keyFlag} && ${idGenType}!="ID_WORKER")
     @Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "default")
+	@GenericGenerator(name = "default", strategy = "${package.IDGenerator}.DefaultIDGenerator")
 #end
 	@Column(name="${field.name}")
 	private ${field.propertyType} ${field.propertyName};

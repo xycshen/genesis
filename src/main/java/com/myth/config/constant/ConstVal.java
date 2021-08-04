@@ -47,6 +47,8 @@ public class ConstVal {
     public static final String TEMPLATE_ENTITY_VO = "/template/entityVO.java.vm";
     public static final String TEMPLATE_SAVE_ENTITY_VO = "/template/save_entityVO.java.vm";
     public static final String TEMPLATE_UPDATE_ENTITY_VO = "/template/update_entityVO.java.vm";
+    public static final String TEMPLATE_SNOW_FLAKE = "/template/snow_flake.java.vm";
+    public static final String TEMPLATE_DEFAULT_ID_GENERATOR = "template/default_ID_generator.java.vm";
     public static final String TEMPLATE_APPLICATION_PROPERTIES = "/template/application.properties.vm";
 
 
