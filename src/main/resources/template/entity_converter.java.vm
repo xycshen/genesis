@@ -1,0 +1,50 @@
+package ${package.EntityConverter};
+
+import ${package.Entity}.${entity};
+import ${package.EntityVO}.Save${entity}VO;
+import ${package.EntityVO}.Update${entity}VO;
+import ${package.EntityVO}.${entity}VO;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.factory.Mappers;
+
+/**
+ * @author ${author}
+ * @Date ${date}
+ * @Description ${entity}转化
+ */
+@Mapper
+public interface ${entity}Converter {
+    ${entity}Converter INSTANCE = Mappers.getMapper(${entity}Converter.class);
+
+    /**
+     * entity转VO
+     *
+     * @param ${table.strConvertLowerCamel(${entity})}
+     * @param ${table.strConvertLowerCamel(${entity})}VO
+     * @return
+     */
+    #foreach($field in ${table.fields})
+    #if(${field.propertyType}=="Date")
+    @Mapping(source = "$field", target = "$field", dateFormat = "yyyy-MM-dd")
+    #end
+    #end
+    ${entity}VO mapEntityToVO(${entity} ${table.strConvertLowerCamel(${entity})}, @MappingTarget ${entity}VO ${table.strConvertLowerCamel(${entity})}VO);
+
+    /**
+     * saveVO转entity
+     *
+     * @param save${table.strConvertLowerCamel(${entity})}VO
+     * @return
+     */
+    ${entity} mapSaveVOToEntity(Save${entity}VO save${table.strConvertLowerCamel(${entity})}VO);
+
+    /**
+     * updateVO转entity
+     *
+     * @param update${table.strConvertLowerCamel(${entity})}VO
+     * @return
+     */
+    ${entity} mapUpdateVOToEntity(Update${entity}VO update${table.strConvertLowerCamel(${entity})}VO);
+}

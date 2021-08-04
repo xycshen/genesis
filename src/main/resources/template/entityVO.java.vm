@@ -5,8 +5,8 @@ import java.util.Date;
 #end
 import lombok.Data;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.beans.BeanUtils;
 import ${package.Entity}.${entity};
+import ${package.EntityConverter}.${entity}Converter;
 
 /**
  * <p>
@@ -28,6 +28,6 @@ public class ${entity}VO  {
 #end
 
 	public ${entity}VO(${entity} ${table.strConvertLowerCamel(${entity})}) {
-		BeanUtils.copyProperties(${table.strConvertLowerCamel(${entity})},this);
+		${entity}Converter.INSTANCE.mapEntityToVO(${table.strConvertLowerCamel(${entity})}, this);
 	}
 }

@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 /**
  * <p>
- * ${table.name}
+ * ${table.comment}
  * </p>
  *
  * @author ${author}
@@ -22,7 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class ${entity} implements Serializable {
 
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 #foreach($field in ${table.fields})
 	/**

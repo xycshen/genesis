@@ -6,8 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 #end
 import lombok.Data;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.beans.BeanUtils;
 import ${package.Entity}.${entity};
+import ${package.EntityConverter}.${entity}Converter;
 
 /**
  * <p>
@@ -30,9 +30,8 @@ public class Update${entity}VO  {
 	private ${field.propertyType} ${field.propertyName};
 	#end
 
+
 	public ${entity} to${entity}() {
-		${entity} ${table.strConvertLowerCamel(${entity})} = new ${entity}();
-		BeanUtils.copyProperties(this,${table.strConvertLowerCamel(${entity})});
-		return ${table.strConvertLowerCamel(${entity})};
+		return ${entity}Converter.INSTANCE.mapUpdateVOToEntity(this);
 	}
 }

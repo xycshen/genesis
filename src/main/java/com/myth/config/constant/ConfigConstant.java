@@ -75,6 +75,8 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("UpdateEntityVO", "vo_path", File.separator + "Update%sVO.java", PackageUtils.joinPackage(config.getParent(), "domain.vo"), ConstVal.TEMPLATE_UPDATE_ENTITY_VO);
         ConstVal.configConstantList.add(constant);
+        constant = new ConfigConstant("EntityConverter", "converter_path", File.separator + "%sConverter.java", PackageUtils.joinPackage(config.getParent(), "domain.converter"), ConstVal.TEMPLATE_ENTITY_CONVERTER);
+        ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Utils", "utils_path", File.separator + "SnowFlake.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_SNOW_FLAKE);
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("IDGenerator", "utils_path", File.separator + "DefaultIDGenerator.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_DEFAULT_ID_GENERATOR);
