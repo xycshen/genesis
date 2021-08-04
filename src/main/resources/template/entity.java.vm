@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 /**
  * <p>
- * ${table.name}
+ * ${table.comment}
  * </p>
  *
  * @author ${author}
