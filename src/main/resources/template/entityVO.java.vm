@@ -24,7 +24,11 @@ public class ${entity}VO  {
 	 * ${field.comment}
 	 */
 	@ApiModelProperty(value = "${field.comment}")
+	#if(${field.propertyType}=="Date")
+	private String ${field.propertyName};
+	#else
 	private ${field.propertyType} ${field.propertyName};
+	#end
 #end
 
 	public ${entity}VO(${entity} ${table.strConvertLowerCamel(${entity})}) {

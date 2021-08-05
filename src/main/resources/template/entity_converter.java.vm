@@ -27,7 +27,7 @@ public interface ${entity}Converter {
      */
     #foreach($field in ${table.fields})
     #if(${field.propertyType}=="Date")
-    @Mapping(source = "$field", target = "$field", dateFormat = "yyyy-MM-dd")
+    @Mapping(source = "${field.propertyName}", target = "${field.propertyName}", dateFormat = "yyyy-MM-dd")
     #end
     #end
     ${entity}VO mapEntityToVO(${entity} ${table.strConvertLowerCamel(${entity})}, @MappingTarget ${entity}VO ${table.strConvertLowerCamel(${entity})}VO);
@@ -35,16 +35,16 @@ public interface ${entity}Converter {
     /**
      * saveVO转entity
      *
-     * @param save${table.strConvertLowerCamel(${entity})}VO
+     * @param save${entity}VO
      * @return
      */
-    ${entity} mapSaveVOToEntity(Save${entity}VO save${table.strConvertLowerCamel(${entity})}VO);
+    ${entity} mapSaveVOToEntity(Save${entity}VO save${entity}VO);
 
     /**
      * updateVO转entity
      *
-     * @param update${table.strConvertLowerCamel(${entity})}VO
+     * @param update${entity}VO
      * @return
      */
-    ${entity} mapUpdateVOToEntity(Update${entity}VO update${table.strConvertLowerCamel(${entity})}VO);
+    ${entity} mapUpdateVOToEntity(Update${entity}VO update${entity}VO);
 }
