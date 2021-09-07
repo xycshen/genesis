@@ -4,7 +4,9 @@ import ${package.Service}.${table.serviceName};
 import ${package.EntityVO}.Save${entity}VO;
 import ${package.EntityVO}.Update${entity}VO;
 import ${package.EntityVO}.${entity}VO;
-import ${package.ResultModel}.ResultModel;
+import ${package.Entity}.${entity};
+import com.chartmo.result.ResultModel;
+import com.chartmo.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +34,7 @@ import io.swagger.annotations.ApiOperation;
 public class ${table.controllerName} {
 
     @Autowired
-    private ${table.serviceName} ${table.strConvertLowerCamel(${table.serviceName})};
+    private BaseService<${entity}> baseService;
 
     /**
      * 添加对象
@@ -44,7 +46,7 @@ public class ${table.controllerName} {
     @ResponseBody
     @ApiOperation(value = "添加")
     public ResultModel<Object> save(@ModelAttribute Save${entity}VO ${table.strConvertLowerCamel(${entity})}) {
-        ${table.strConvertLowerCamel(${table.serviceName})}.save(${table.strConvertLowerCamel(${entity})}.to${entity}());
+        baseService.save(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }
 
@@ -59,7 +61,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "删除")
     @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
     public ResultModel<Object> delete(@NotBlank(message = "唯一标识不能为空") String key) {
-        ${table.strConvertLowerCamel(${table.serviceName})}.remove(key);
+        baseService.remove(key);
         return ResultModel.success();
     }
 
@@ -73,7 +75,7 @@ public class ${table.controllerName} {
     @ResponseBody
     @ApiOperation(value = "修改")
     public ResultModel<Object> update(@ModelAttribute Update${entity}VO ${table.strConvertLowerCamel(${entity})}) {
-        ${table.strConvertLowerCamel(${table.serviceName})}.update(${table.strConvertLowerCamel(${entity})}.to${entity}());
+        baseService.update(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }
 
@@ -88,7 +90,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "通过唯一标识查询单个")
     @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
     public ResultModel<${entity}VO> getById(@NotBlank(message = "唯一标识不能为空") String key) {
-        ${entity}VO ${table.strConvertLowerCamel(${entity})} = new ${entity}VO(${table.strConvertLowerCamel(${table.serviceName})}.getById(key));
+        ${entity}VO ${table.strConvertLowerCamel(${entity})} = new ${entity}VO(baseService.getByKey(key));
         return ResultModel.success(${table.strConvertLowerCamel(${entity})});
     }
 
@@ -101,7 +103,7 @@ public class ${table.controllerName} {
     @ResponseBody
     @ApiOperation(value = "查询所有")
     public ResultModel<List<${entity}VO>> list() {
-        List<${entity}VO> list = ${table.strConvertLowerCamel(${table.serviceName})}.findAll().stream().map(${table.strConvertLowerCamel(${entity})} -> new ${entity}VO(${table.strConvertLowerCamel(${entity})})).collect(Collectors.toList());
+        List<${entity}VO> list = baseService.findAll().stream().map(${table.strConvertLowerCamel(${entity})} -> new ${entity}VO(${table.strConvertLowerCamel(${entity})})).collect(Collectors.toList());
         return ResultModel.success(list);
     }
 }

@@ -5,9 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 #end
 import lombok.Data;
-import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * <p>
@@ -17,9 +16,8 @@ import org.hibernate.annotations.GenericGenerator;
  * @author ${author}
  * @since ${date}
  */
+@Document("${table.name}")
 @Data
-@Entity(name="${table.name}")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class ${entity} implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,12 +28,8 @@ public class ${entity} implements Serializable {
 	 */
 #if(${field.keyFlag} && ${idGenType}!="ID_WORKER")
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "default")
-	@GenericGenerator(name = "default", strategy = "${package.IDGenerator}.DefaultIDGenerator")
 #end
-	@Column(name="${field.name}")
 	private ${field.propertyType} ${field.propertyName};
-
 #end
 
 	@Override

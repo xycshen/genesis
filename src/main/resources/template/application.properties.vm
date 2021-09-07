@@ -1,6 +1,7 @@
-spring.datasource.driver-class-name=${datasource.driverName}
-spring.datasource.username=${datasource.username}
-spring.datasource.password=${datasource.password}
-spring.datasource.url=${datasource.url}
+spring.data.mongodb.database=admin
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.username=admin
+spring.data.mongodb.password=123456
 
 swagger2.enable=true

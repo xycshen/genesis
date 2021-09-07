@@ -57,12 +57,6 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Controller", "controller_path", File.separator + "%sController.java", PackageUtils.joinPackage(config.getParent(), config.getController()), template.getController());
         ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("ResultCodeEnum", "result_code_enum", File.separator + "ResultCodeEnum.java", PackageUtils.joinPackage(config.getParent(), "domain.enums"), ConstVal.TEMPLATE_RESULT_CODE_ENUM);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("ResultModel", "result_model", File.separator + "ResultModel.java", PackageUtils.joinPackage(config.getParent(), "support.result"), ConstVal.TEMPLATE_RESULT_MODEL);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("ExceptionAdvice", "exception_advice", File.separator + "ExceptionAdvice.java", PackageUtils.joinPackage(config.getParent(), "support.result"), ConstVal.TEMPLATE_EXCEPTION_ADVICE);
-        ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Bootstrap", "bootstrap", File.separator + "Bootstrap.java", config.getParent(), ConstVal.TEMPLATE_BOOTSTRAP);
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Config", "web_mvc_config", File.separator + "WebMvcConfig.java", PackageUtils.joinPackage(config.getParent(), "config"), ConstVal.TEMPLATE_WEB_MVC_CONFIG);
@@ -78,8 +72,6 @@ public class ConfigConstant {
         constant = new ConfigConstant("EntityConverter", "converter_path", File.separator + "%sConverter.java", PackageUtils.joinPackage(config.getParent(), "domain.converter"), ConstVal.TEMPLATE_ENTITY_CONVERTER);
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Utils", "utils_path", File.separator + "SnowFlake.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_SNOW_FLAKE);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("IDGenerator", "utils_path", File.separator + "DefaultIDGenerator.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_DEFAULT_ID_GENERATOR);
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("application.properties", ConstVal.APPLICATION, File.separator + "application.properties", "", ConstVal.TEMPLATE_APPLICATION_PROPERTIES);
         ConstVal.configConstantList.add(constant);

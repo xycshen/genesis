@@ -3,6 +3,7 @@ package ${package.ServiceImpl};
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 import ${package.Repository}.${table.repositoryName};
+import com.chartmo.service.BaseService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
  * @since ${date}
  */
 @Service
-public class ${table.serviceImplName} implements ${table.serviceName} {
+public class ${table.serviceImplName} implements ${table.serviceName} , BaseService<${entity}>{
 
     @Autowired
     private ${table.repositoryName} ${table.strConvertLowerCamel(${table.repositoryName})};
@@ -41,7 +42,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     public ${entity} update(${entity} entity) {
-        return ${table.strConvertLowerCamel(${table.repositoryName})}.saveAndFlush(entity);
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.save(entity);
     }
 
     /**
@@ -69,7 +70,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      * @return
      */
     @Override
-    public ${entity} getById(String key) {
-        return ${table.strConvertLowerCamel(${table.repositoryName})}.getOne(key);
+    public ${entity} getByKey(String key) {
+        return ${table.strConvertLowerCamel(${table.repositoryName})}.getById(key);
     }
 }

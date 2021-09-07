@@ -12,41 +12,4 @@ import java.util.List;
  * @since ${date}
  */
 public interface ${table.serviceName} {
-
-    /**
-    * 添加
-    *
-    * @param entity
-    * @return
-    */
-    ${entity} save(${entity} entity);
-
-    /**
-     * 修改
-     *
-     * @param entity
-     * @return
-     */
-    ${entity} update(${entity} entity);
-
-    /**
-     * 查询所有
-     *
-     */
-    List<${entity}> findAll();
-
-    /**
-     * 删除
-     *
-     * @param key 唯一标识
-     */
-    void remove(String key);
-
-    /**
-     * 查询详情
-     * @param key 唯一标识
-     * @return
-     */
-    ${entity} getById(String key);
-
 }
