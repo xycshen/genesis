@@ -13,4 +13,4 @@ import org.springframework.stereotype.Repository;
  * @since ${date}
  */
 @Repository
-public interface ${table.repositoryName} extends BaseRepository<${entity}> {}
+public interface ${table.repositoryName} extends MongoRepository<${entity},String> {}

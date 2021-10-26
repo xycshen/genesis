@@ -3,10 +3,11 @@ package ${package.ServiceImpl};
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 import ${package.Repository}.${table.repositoryName};
-import com.chartmo.service.BaseService;
+import com.matata.service.BaseService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
      */
     @Override
     public ${entity} save(${entity} entity) {
+        entity.setCreateDate(new Date());
         return ${table.strConvertLowerCamel(${table.repositoryName})}.save(entity);
     }
 
@@ -42,6 +44,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
      */
     @Override
     public ${entity} update(${entity} entity) {
+        entity.setUpdateDate(new Date());
         return ${table.strConvertLowerCamel(${table.repositoryName})}.save(entity);
     }
 

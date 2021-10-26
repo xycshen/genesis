@@ -20,14 +20,14 @@ import ${package.EntityConverter}.${entity}Converter;
 @Data
 public class Update${entity}VO  {
 	#foreach($field in ${table.fields})
+		#if(${field.propertyType}!="Date")
 	/**
 	 * ${field.comment}
 	 */
 	@ApiModelProperty(value = "${field.comment}")
-	#if(${field.propertyType}=="Date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
-	#end
+	@NotNull(message = "${field.comment}不能为空")
 	private ${field.propertyType} ${field.propertyName};
+		#end
 	#end
 
 

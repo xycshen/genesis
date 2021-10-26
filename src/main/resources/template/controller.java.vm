@@ -5,12 +5,15 @@ import ${package.EntityVO}.Save${entity}VO;
 import ${package.EntityVO}.Update${entity}VO;
 import ${package.EntityVO}.${entity}VO;
 import ${package.Entity}.${entity};
-import com.chartmo.result.ResultModel;
-import com.chartmo.service.BaseService;
+import com.matata.result.ResultModel;
+import com.matata.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +48,14 @@ public class ${table.controllerName} {
     @PostMapping("save")
     @ResponseBody
     @ApiOperation(value = "添加")
-    public ResultModel<Object> save(@ModelAttribute Save${entity}VO ${table.strConvertLowerCamel(${entity})}) {
+    public ResultModel<Object> save(@RequestBody @Validated Save${entity}VO ${table.strConvertLowerCamel(${entity})}, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResultModel.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+        if (StringUtils.isEmpty(${table.strConvertLowerCamel(${entity})}.getOwner())) {
+            String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+            ${table.strConvertLowerCamel(${entity})}.setOwner(username);
+        }
         baseService.save(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }
@@ -74,7 +84,10 @@ public class ${table.controllerName} {
     @PostMapping("update")
     @ResponseBody
     @ApiOperation(value = "修改")
-    public ResultModel<Object> update(@ModelAttribute Update${entity}VO ${table.strConvertLowerCamel(${entity})}) {
+    public ResultModel<Object> update(@RequestBody @Validated Update${entity}VO ${table.strConvertLowerCamel(${entity})}, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+        return ResultModel.fail(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
         baseService.update(${table.strConvertLowerCamel(${entity})}.to${entity}());
         return ResultModel.success();
     }

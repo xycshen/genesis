@@ -57,12 +57,12 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("Controller", "controller_path", File.separator + "%sController.java", PackageUtils.joinPackage(config.getParent(), config.getController()), template.getController());
         ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("Bootstrap", "bootstrap", File.separator + "Bootstrap.java", config.getParent(), ConstVal.TEMPLATE_BOOTSTRAP);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("Config", "web_mvc_config", File.separator + "WebMvcConfig.java", PackageUtils.joinPackage(config.getParent(), "config"), ConstVal.TEMPLATE_WEB_MVC_CONFIG);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("SwaggerConfig", "swagger_config", File.separator + "SwaggerConfig.java", PackageUtils.joinPackage(config.getParent(), "config.swagger"), ConstVal.TEMPLATE_SWAGGER_CONFIG);
-        ConstVal.configConstantList.add(constant);
+//        constant = new ConfigConstant("Bootstrap", "bootstrap", File.separator + "Bootstrap.java", config.getParent(), ConstVal.TEMPLATE_BOOTSTRAP);
+//        ConstVal.configConstantList.add(constant);
+//        constant = new ConfigConstant("Config", "web_mvc_config", File.separator + "WebMvcConfig.java", PackageUtils.joinPackage(config.getParent(), "config"), ConstVal.TEMPLATE_WEB_MVC_CONFIG);
+//        ConstVal.configConstantList.add(constant);
+//        constant = new ConfigConstant("SwaggerConfig", "swagger_config", File.separator + "SwaggerConfig.java", PackageUtils.joinPackage(config.getParent(), "config.swagger"), ConstVal.TEMPLATE_SWAGGER_CONFIG);
+//        ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("EntityVO", "vo_path", File.separator + "%sVO.java", PackageUtils.joinPackage(config.getParent(), "domain.vo"), ConstVal.TEMPLATE_ENTITY_VO);
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("SaveEntityVO", "vo_path", File.separator + "Save%sVO.java", PackageUtils.joinPackage(config.getParent(), "domain.vo"), ConstVal.TEMPLATE_SAVE_ENTITY_VO);
@@ -71,10 +71,10 @@ public class ConfigConstant {
         ConstVal.configConstantList.add(constant);
         constant = new ConfigConstant("EntityConverter", "converter_path", File.separator + "%sConverter.java", PackageUtils.joinPackage(config.getParent(), "domain.converter"), ConstVal.TEMPLATE_ENTITY_CONVERTER);
         ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("Utils", "utils_path", File.separator + "SnowFlake.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_SNOW_FLAKE);
-        ConstVal.configConstantList.add(constant);
-        constant = new ConfigConstant("application.properties", ConstVal.APPLICATION, File.separator + "application.properties", "", ConstVal.TEMPLATE_APPLICATION_PROPERTIES);
-        ConstVal.configConstantList.add(constant);
+//        constant = new ConfigConstant("Utils", "utils_path", File.separator + "SnowFlake.java", PackageUtils.joinPackage(config.getParent(), "utils"), ConstVal.TEMPLATE_SNOW_FLAKE);
+//        ConstVal.configConstantList.add(constant);
+//        constant = new ConfigConstant("application.properties", ConstVal.APPLICATION, File.separator + "application.properties", "", ConstVal.TEMPLATE_APPLICATION_PROPERTIES);
+//        ConstVal.configConstantList.add(constant);
     }
 
 
