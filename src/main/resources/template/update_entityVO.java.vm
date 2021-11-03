@@ -8,6 +8,7 @@ import lombok.Data;
 import io.swagger.annotations.ApiModelProperty;
 import ${package.Entity}.${entity};
 import ${package.EntityConverter}.${entity}Converter;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -20,7 +21,7 @@ import ${package.EntityConverter}.${entity}Converter;
 @Data
 public class Update${entity}VO  {
 	#foreach($field in ${table.fields})
-		#if(${field.propertyType}!="Date")
+		#if(${field.propertyType}!="Date"&&${field.propertyName}!="owner")
 	/**
 	 * ${field.comment}
 	 */

@@ -13,4 +13,12 @@ import org.springframework.stereotype.Repository;
  * @since ${date}
  */
 @Repository
-public interface ${table.repositoryName} extends MongoRepository<${entity},String> {}
+public interface ${table.repositoryName} extends MongoRepository<${entity},String> {
+        /**
+        * 通过唯一保证查询
+        *
+        * @param key
+        * @return
+        */
+    ${entity} getById(String key);
+}

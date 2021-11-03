@@ -28,7 +28,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
      * 添加
      *
      * @param entity 对象
-     * @return
      */
     @Override
     public ${entity} save(${entity} entity) {
@@ -40,7 +39,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
      * 修改
      *
      * @param entity 对象
-     * @return
      */
     @Override
     public ${entity} update(${entity} entity) {
@@ -70,7 +68,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
      * 查询详情
      *
      * @param key 唯一标识
-     * @return
      */
     @Override
     public ${entity} getByKey(String key) {
