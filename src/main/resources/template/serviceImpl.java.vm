@@ -27,7 +27,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
     /**
      * 添加
      *
-     * @param entity
+     * @param entity 对象
      * @return
      */
     @Override
@@ -39,7 +39,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} , BaseServ
     /**
      * 修改
      *
-     * @param entity
+     * @param entity 对象
      * @return
      */
     @Override
