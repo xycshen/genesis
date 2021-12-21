@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.BindingResult;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.@NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 import io.swagger.annotations.Api;
@@ -71,7 +71,7 @@ public class ${table.controllerName} {
     @ResponseBody
     @ApiOperation(value = "删除")
     @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
-    public ResultModel<Object> delete(@NotBlank(message = "唯一标识不能为空") String key) {
+    public ResultModel<Object> delete(@NotNull(message = "唯一标识不能为空") String key) {
         baseService.remove(key);
         return ResultModel.success();
     }
@@ -103,7 +103,7 @@ public class ${table.controllerName} {
     @ResponseBody
     @ApiOperation(value = "通过唯一标识查询单个")
     @ApiImplicitParam(paramType = "query", name = "key", value = "唯一标识", required = true, dataType = "String")
-    public ResultModel<${entity}VO> getById(@NotBlank(message = "唯一标识不能为空") String key) {
+    public ResultModel<${entity}VO> getById(@NotNull(message = "唯一标识不能为空") String key) {
         ${entity}VO ${table.strConvertLowerCamel(${entity})} = new ${entity}VO(baseService.getByKey(key));
         return ResultModel.success(${table.strConvertLowerCamel(${entity})});
     }
