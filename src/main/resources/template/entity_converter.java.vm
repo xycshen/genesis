@@ -25,11 +25,6 @@ public interface ${entity}Converter {
      * @param ${table.strConvertLowerCamel(${entity})}VO
      * @return
      */
-    #foreach($field in ${table.fields})
-    #if(${field.propertyType}=="Date")
-    @Mapping(source = "${field.propertyName}", target = "${field.propertyName}", dateFormat = "yyyy-MM-dd")
-    #end
-    #end
     ${entity}VO mapEntityToVO(${entity} ${table.strConvertLowerCamel(${entity})}, @MappingTarget ${entity}VO ${table.strConvertLowerCamel(${entity})}VO);
 
     /**

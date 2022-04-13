@@ -2,12 +2,15 @@ package ${package.EntityVO};
 
 #if(${table.hasDate})
 import java.util.Date;
+
+import com.sun.istack.internal.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 #end
 import lombok.Data;
 import io.swagger.annotations.ApiModelProperty;
 import ${package.Entity}.${entity};
 import ${package.EntityConverter}.${entity}Converter;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -25,9 +28,7 @@ public class Save${entity}VO  {
 	 * ${field.comment}
 	 */
 	@ApiModelProperty(value = "${field.comment}")
-	#if(${field.propertyType}=="Date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
-	#end
+	@NotNull(message = "${field.comment}不能为空")
 	private ${field.propertyType} ${field.propertyName};
 	#end
 	#end
